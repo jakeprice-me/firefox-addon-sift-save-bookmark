@@ -4,6 +4,8 @@ This is a Firefox Desktop and Firefox for Android extension/add-on that gets the
 
 It's also worth noting, that the main functionality has been almost entirely written by ChatGPT.
 
+![](.README/images/firefox_addon.png)
+
 ## Testing
 
 ### Firefox Desktop
