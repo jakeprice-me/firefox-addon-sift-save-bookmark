@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var url = urlInput.value;
         var tags = tagsInput.value || "";
         var description = descriptionInput.value || "";
+        var archive = document.getElementById("archive").checked;
 
         // Retrieve the server URL from the extension's settings
         chrome.storage.local.get("serverURL", function(data) {
@@ -64,7 +65,8 @@ document.addEventListener("DOMContentLoaded", function() {
             title: title,
             url: url,
             description: description,
-            tags: tags
+            tags: tags,
+            archive: archive
         };
 
         // Send the bookmarkData object as JSON data in the request body
