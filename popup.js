@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var urlInput = document.getElementById("url");
     var descriptionInput = document.getElementById("description");
     var tagsInput = document.getElementById("tags");
+    var archiveCheckbox = document.getElementById("archive");
 
     // Get the current active tab's information
     chrome.tabs.query({
@@ -41,20 +42,20 @@ document.addEventListener("DOMContentLoaded", function() {
         var url = urlInput.value;
         var tags = tagsInput.value || "";
         var description = descriptionInput.value || "";
-        var archive = document.getElementById("archive").checked;
+        var archive = archiveCheckbox.checked;
 
         // Retrieve the server URL from the extension's settings
         chrome.storage.local.get("serverURL", function(data) {
             var serverURL = data.serverURL;
             if (serverURL) {
-                savePageInfo(serverURL, title, url, description, tags);
+                savePageInfo(serverURL, title, url, description, tags, archive);
             } else {
                 showError("SIFT Server URL is not defined.");
             }
         });
     });
 
-    function savePageInfo(serverURL, title, url, description, tags) {
+    function savePageInfo(serverURL, title, url, description, tags, archive) {
         // Create an HTTP request to send the data to the server
         var xhr = new XMLHttpRequest();
         xhr.open("POST", serverURL + "/save-bookmark", true);
@@ -66,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
             url: url,
             description: description,
             tags: tags,
-            archive: archive
+            archive: archive ? true : false // Include the "archive" value in the bookmarkData object as true or false based on the checkbox state
         };
 
         // Send the bookmarkData object as JSON data in the request body
