@@ -32,7 +32,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showMessage(message, className) {
-    messageContainer.innerHTML = '<div class="' + className + '">' + message + '</div>';
+    var messageElement = document.createElement("div");
+    messageElement.className = className;
+    messageElement.textContent = message;
+
+    // Remove existing message elements
+    while (messageContainer.firstChild) {
+      messageContainer.firstChild.remove();
+    }
+
+    // Append the new message element
+    messageContainer.appendChild(messageElement);
   }
 });
 
