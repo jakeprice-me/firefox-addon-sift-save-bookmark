@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function savePageInfo(serverURL, title, url, description, tags, archive) {
         // Create an HTTP request to send the data to the server
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", serverURL + "/save-bookmark", true);
+        xhr.open("POST", serverURL + "/api/v1/save-bookmark", true);
         xhr.setRequestHeader("Content-Type", "application/json");
 
         // Create a JavaScript object with the data
@@ -75,15 +75,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Handle the server's response
         xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    showMessage("Bookmark saved successfully.");
-                } else {
-                    showError("Failed to save bookmark. Check the SIFT Server URL.");
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 201) {
+                    showMessage("Bookmark saved successfully. Response Code: " + xhr.status);
+                } else if (xhr.status !== 0) {
+                    showError("Failed to save bookmark. Check the SIFT Server URL & Server Logs. Response Code: " + xhr.status);
                 }
             }
-        };
-    }
+        }
+    };
+
 
     function showMessage(message, messageType) {
         var messageElement = document.createElement("div");
