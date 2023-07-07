@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (xhr.status === 201) {
                     showMessage("Bookmark saved successfully. Response Code: " + xhr.status);
                 } else if (xhr.status !== 0) {
-                    showError("Failed to save bookmark. Check the SIFT Server URL & Server Logs. Response Code: " + xhr.status);
+                    showError("Failed to save bookmark. Check the SIFT Server URL & Server Logs. Response Code: " + xhr.status + xhr.response);
                 }
             }
         }
