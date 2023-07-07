@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "SIFT Bookmark",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Save the title and URL of the current page to SIFT as a bookmark entry",
   "icons": {
     "48": "icon.png"
