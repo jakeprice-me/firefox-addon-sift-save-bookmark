@@ -64,7 +64,11 @@
                 font-size: 1.4rem;
             }
 
-            #label-archive {
+            #label-local_archive {
+                flex-grow: 1;
+            }
+
+            #label-external_archive {
                 flex-grow: 1;
             }
 
@@ -134,6 +138,21 @@
             </div>
 
             <div class="form-row">
+                <label for="type">Type:</label>
+                <input type="text" id="type" placeholder="Enter Type..." value="bookmark" required>
+            </div>
+
+            <div class="form-row">
+                <label for="category">Category:</label>
+                <input type="text" id="category" placeholder="Enter Category...">
+            </div>
+
+            <div class="form-row">
+                <label for="series">Series:</label>
+                <input type="text" id="series" placeholder="Enter Series...">
+            </div>
+
+            <div class="form-row">
                 <label for="description">Description:</label>
                 <textarea id="description" name="entry_content" placeholder="Enter description..."></textarea>
             </div>
@@ -144,8 +163,13 @@
             </div>
 
             <div class="form-row-alt">
-                <label for="archive" id="label-archive">Archive Bookmark?</label>
-                <input type="checkbox" id="archive" />
+                <label for="local_archive" id="label-local_archive">Create Local Archive?</label>
+                <input type="checkbox" id="local_archive" />
+            </div>
+
+            <div class="form-row-alt">
+                <label for="external_archive" id="label-external_archive">Create External Archive?</label>
+                <input type="checkbox" id="external_archive" />
             </div>
 
             <div class="form-row">
